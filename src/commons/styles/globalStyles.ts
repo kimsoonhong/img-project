@@ -10,7 +10,7 @@ export const globalStyles = css`
 	}
 
 	body {
-		background-color: #fcf9ee;
+		background-color: #fff6e4;
 	}
 
 	button {

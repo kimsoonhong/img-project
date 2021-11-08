@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 interface Iprops {
 	isActive: boolean;
@@ -13,12 +14,14 @@ export const Top = styled.div`
 	text-align: center;
 	left: 50%;
 	transform: translate(-50%, 0);
-
 	background-color: gray;
 	border-radius: 40px;
-
 	position: fixed;
 	top: 20px;
+
+	@media ${breakPoints.mobile} {
+		display: none;
+	}
 `;
 export const Middle = styled.div`
 	width: 100%;
@@ -27,6 +30,10 @@ export const Middle = styled.div`
 	background-image: url(/img/bg.png);
 	background-repeat: no-repeat;
 	background-size: 100% 100vh;
+
+	@media ${breakPoints.mobile} {
+		background-image: none;
+	}
 `;
 
 export const MiddleImg = styled.img`
@@ -83,6 +90,12 @@ export const UploadButton = styled.div`
 	text-align: center;
 	padding-top: 15px;
 	position: relative;
+
+	@media ${breakPoints.mobile} {
+		width: 40px;
+		height: 40px;
+		margin: 0 6px;
+	}
 `;
 
 export const UploadImg = styled.img`
@@ -91,6 +104,12 @@ export const UploadImg = styled.img`
 	opacity: 0.6;
 	position: absolute;
 	transform: translate(-40px, -15px);
+	@media ${breakPoints.mobile} {
+		width: 40px;
+		height: 40px;
+		/* margin: 0 6px; */
+		transform: translate(-20px, -15px);
+	}
 `;
 
 export const OptionWrapper = styled.div`
@@ -107,4 +126,11 @@ export const RadioLabel = styled.label`
 	margin-right: 20px;
 	font-weight: 500;
 	cursor: pointer;
+`;
+
+export const Text = styled.div`
+	@media ${breakPoints.mobile} {
+		font-size: 8px;
+		transform: translateY(-10px);
+	}
 `;

@@ -8,6 +8,7 @@ import {
 	ImgButtonWrapper,
 	UploadImg,
 	UploadButton,
+	Text
 } from "./project.style";
 
 import { LeftCircleFilled, RightCircleFilled } from "@ant-design/icons";
@@ -48,8 +49,8 @@ export default function ProjectUI(props: Iprops) {
 								isActive={index === props.count}
 							>
 								<UploadImg src={`${props.resultImgUrl[index]}`} />
-								<div>-</div>
-								<div>Delete</div>
+								<Text>-</Text>
+								<Text>Delete</Text>
 								<input type="file" multiple style={{ display: "none" }} />
 							</UploadButton>
 						))}
@@ -63,8 +64,8 @@ export default function ProjectUI(props: Iprops) {
 										<UploadButton onClick={props.onClickGreyBox} key={index}>
 											<label htmlFor={String(index)}>
 												<div style={{ cursor: "pointer" }}>
-													<div>+</div>
-													<div>Upload</div>
+													<Text>+</Text>
+													<Text>Upload</Text>
 												</div>
 											</label>
 										</UploadButton>
