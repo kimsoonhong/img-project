@@ -1,14 +1,22 @@
 import styled from "@emotion/styled";
-import { LeftOutlined } from "antd";
+import { MouseEvent } from "react";
+
+interface Iprops {
+	isActive: boolean;
+}
 
 export const Wrapper = styled.div`
 	width: 100%;
 `;
 
 export const Top = styled.div`
-	width: 100%;
+	width: 120px;
+	text-align: center;
+	left: 50%;
+	transform: translate(-50%, 0);
 
-	background-color: salmon;
+	background-color: gray;
+	border-radius: 40px;
 
 	position: fixed;
 	top: 20px;
@@ -16,11 +24,20 @@ export const Top = styled.div`
 export const Middle = styled.div`
 	width: 100%;
 	height: 100vh;
-	background-color: seashell;
+
+	background-image: url(/img/bg.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100vh;
+`;
+
+export const MiddleImg = styled.img`
+	width: 100%;
+	height: 85vh;
+	object-fit: fill;
+	margin: auto;
 `;
 
 export const ButtonDiv = styled.div`
-	/* background-color: royalblue; */
 	height: 60px;
 	width: 95%;
 
@@ -32,26 +49,12 @@ export const ButtonDiv = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-
-	/* position: fixed; */
-	/* top: 50%; */
-	/* margin: auto; */
 `;
-export const Left = styled.button`
-	width: 100px;
-	height: 100px;
-	background-color: silver;
-`;
-export const Right = styled.button``;
 
 export const Bottom = styled.div`
 	width: 100%;
-
-	/* background-color: red; */
-
 	display: flex;
 	justify-content: center;
-
 	position: fixed;
 	bottom: 20px;
 `;
@@ -59,8 +62,6 @@ export const Bottom = styled.div`
 // ===?
 
 export const ImageWrapper = styled.div`
-	width: 996px;
-	padding-top: 40px;
 	display: flex;
 	flex-direction: column;
 `;
@@ -74,10 +75,12 @@ export const UploadButton = styled.div`
 	width: 78px;
 	height: 78px;
 	background-color: #bdbdbd;
-	margin-right: 24px;
+	margin: 0px 12px;
 	outline: none;
-	border: none;
+	box-shadow: ${(props: Iprops) =>
+		props.isActive ? "1px 1px 1px 1px gray " : "none"};
 	cursor: pointer;
+	transition: ease-in all 200ms;
 	text-align: center;
 	padding-top: 15px;
 	position: relative;
@@ -86,7 +89,6 @@ export const UploadButton = styled.div`
 export const UploadImg = styled.img`
 	width: 78px;
 	height: 78px;
-
 	opacity: 0.6;
 	position: absolute;
 	transform: translate(-40px, -15px);

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 
 import ProjectUI from "./project.presenter";
 
@@ -9,11 +9,11 @@ export default function Project() {
 	const [count, setCount] = useState(resultImgUrl.length);
 	const [ishover, setIshover] = useState(true);
 
-	function onClickGreyBox(event: any) {
+	function onClickGreyBox(event: MouseEvent<HTMLInputElement>) {
 		(event.target as any)?.children[2]?.click();
 	}
 
-	function onClickDeleteImg(index: any) {
+	function onClickDeleteImg(index: any | MouseEvent<HTMLDivElement>) {
 		const imgArr = [...resultImgUrl];
 		imgArr.splice(index, 1);
 		setResultimgUrl(imgArr);
@@ -52,23 +52,16 @@ export default function Project() {
 		}
 	};
 
-	// let timerId = setTimeout(function tick() {
-	// 	alert("째깍");
-	// 	timerId = setTimeout(tick, 2000); // (*)
-	// }, 2000);
-
 	useEffect(() => {
 		if (ishover === false) {
 			const timer = setInterval(() => {
 				next();
-			}, 1000);
+			}, 5000);
 			return () => clearInterval(timer);
 		} else {
 			return;
 		}
 	});
-
-	console.log(ishover);
 
 	return (
 		<ProjectUI
@@ -80,6 +73,7 @@ export default function Project() {
 			next={next}
 			prov={prov}
 			setIshover={setIshover}
+			ishover={ishover}
 		/>
 	);
 }

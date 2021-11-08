@@ -1,6 +1,8 @@
 import {
 	Wrapper,
+	Top,
 	Middle,
+	MiddleImg,
 	ButtonDiv,
 	Bottom,
 	ImageWrapper,
@@ -10,24 +12,36 @@ import {
 } from "./project.style";
 
 import { LeftCircleFilled, RightCircleFilled } from "@ant-design/icons";
+import { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from "react";
 
-export default function ProjectUI(props) {
+interface Iprops {
+	resultImgUrl: Array<any>;
+	onClickGreyBox: (event: MouseEvent<HTMLInputElement>) => void;
+	onClickDeleteImg: (index: MouseEvent<HTMLDivElement>) => void;
+	onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void;
+	count: number;
+	next: () => void;
+	prov: () => void;
+	setIshover: Dispatch<SetStateAction<boolean>>;
+	ishover: boolean;
+}
+
+export default function ProjectUI(props: Iprops) {
 	return (
 		<Wrapper>
+			<Top>{props.ishover ? "호버됨" : "호버되지 않음"}</Top>
 			<Middle
 				onMouseEnter={() => props.setIshover(true)}
 				onMouseLeave={() => props.setIshover(false)}
 			>
-				<img src={props.resultImgUrl[props.count]} />
-				<ButtonDiv>
-					<LeftCircleFilled onClick={props.prov} style={{ fontSize: "40px" }} />
-					<RightCircleFilled
-						onClick={props.next}
-						style={{ fontSize: "40px" }}
-					/>
-				</ButtonDiv>
+				<MiddleImg src={props?.resultImgUrl[props.count]} />
+
+				<ButtonDiv></ButtonDiv>
 			</Middle>
+
 			<Bottom>
+				{" "}
+				<LeftCircleFilled onClick={props.prov} style={{ fontSize: "40px" }} />
 				<ImageWrapper>
 					<ImgButtonWrapper>
 						{/* =
@@ -37,6 +51,7 @@ export default function ProjectUI(props) {
 							<UploadButton
 								onClick={() => props.onClickDeleteImg(index)}
 								key={index}
+								isActive={index === props.count}
 							>
 								<UploadImg src={`${props.resultImgUrl[index]}`} />
 								<div>-</div>
@@ -50,7 +65,11 @@ export default function ProjectUI(props) {
 							.fill(1)
 							.map((_, index) => {
 								return (
-									<UploadButton onClick={props.onClickGreyBox} key={index}>
+									<UploadButton
+										onClick={props.onClickGreyBox}
+										isActive={index === props.count}
+										key={index}
+									>
 										<label htmlFor={String(index)}>
 											<div>
 												<div>+</div>
@@ -59,7 +78,6 @@ export default function ProjectUI(props) {
 
 											<input
 												id={String(index)}
-												ref={props.fileRef}
 												type="file"
 												onChange={props.onChangeFile}
 												multiple
@@ -73,6 +91,7 @@ export default function ProjectUI(props) {
  = */}
 					</ImgButtonWrapper>
 				</ImageWrapper>
+				<RightCircleFilled onClick={props.next} style={{ fontSize: "40px" }} />
 			</Bottom>
 		</Wrapper>
 	);
