@@ -3,7 +3,6 @@ import {
 	Top,
 	Middle,
 	MiddleImg,
-	ButtonDiv,
 	Bottom,
 	ImageWrapper,
 	ImgButtonWrapper,
@@ -16,7 +15,7 @@ import { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from "react";
 
 interface Iprops {
 	resultImgUrl: Array<any>;
-	onClickGreyBox: (event: MouseEvent<HTMLInputElement>) => void;
+	onClickGreyBox: (event: MouseEvent<HTMLDivElement>) => void;
 	onClickDeleteImg: (index: MouseEvent<HTMLDivElement>) => void;
 	onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void;
 	count: number;
@@ -35,8 +34,6 @@ export default function ProjectUI(props: Iprops) {
 				onMouseLeave={() => props.setIshover(false)}
 			>
 				<MiddleImg src={props?.resultImgUrl[props.count]} />
-
-				<ButtonDiv></ButtonDiv>
 			</Middle>
 
 			<Bottom>
@@ -44,9 +41,6 @@ export default function ProjectUI(props: Iprops) {
 				<LeftCircleFilled onClick={props.prov} style={{ fontSize: "40px" }} />
 				<ImageWrapper>
 					<ImgButtonWrapper>
-						{/* =
-= */}
-
 						{props.resultImgUrl.map((data: any, index: any) => (
 							<UploadButton
 								onClick={() => props.onClickDeleteImg(index)}
@@ -59,32 +53,29 @@ export default function ProjectUI(props: Iprops) {
 								<input type="file" multiple style={{ display: "none" }} />
 							</UploadButton>
 						))}
-						{/* =
-= */}
+
 						{new Array(5 - props.resultImgUrl.length)
 							.fill(1)
 							.map((_, index) => {
 								return (
-									<UploadButton
-										onClick={props.onClickGreyBox}
-										isActive={index === props.count}
-										key={index}
-									>
-										<label htmlFor={String(index)}>
-											<div>
-												<div>+</div>
-												<div>Upload</div>
-											</div>
-
-											<input
-												id={String(index)}
-												type="file"
-												onChange={props.onChangeFile}
-												multiple
-												style={{ display: "none" }}
-											/>
-										</label>
-									</UploadButton>
+									<>
+										{/* @ts-ignore */}
+										<UploadButton onClick={props.onClickGreyBox} key={index}>
+											<label htmlFor={String(index)}>
+												<div style={{ cursor: "pointer" }}>
+													<div>+</div>
+													<div>Upload</div>
+												</div>
+											</label>
+										</UploadButton>
+										<input
+											id={String(index)}
+											type="file"
+											onChange={props.onChangeFile}
+											multiple
+											style={{ display: "none" }}
+										/>
+									</>
 								);
 							})}
 						{/* =

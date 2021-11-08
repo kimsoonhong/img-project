@@ -4,36 +4,28 @@ import ProjectUI from "./project.presenter";
 
 export default function Project() {
 	const [resultImgUrl, setResultimgUrl] = useState([]);
-	const [isUpload, setIsUpload] = useState(true);
-	const [file, setFile] = useState([]);
 	const [count, setCount] = useState(resultImgUrl.length);
 	const [ishover, setIshover] = useState(true);
 
-	function onClickGreyBox(event: MouseEvent<HTMLInputElement>) {
+	const onClickGreyBox = (event: MouseEvent<HTMLDivElement>) => {
 		(event.target as any)?.children[2]?.click();
-	}
-
-	function onClickDeleteImg(index: any | MouseEvent<HTMLDivElement>) {
+	};
+	const onClickDeleteImg = (index: any | MouseEvent<HTMLDivElement>) => {
 		const imgArr = [...resultImgUrl];
 		imgArr.splice(index, 1);
 		setResultimgUrl(imgArr);
-	}
+	};
 
-	async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+	const onChangeFile = (event: ChangeEvent<HTMLInputElement>) => {
 		const fileInfo = event.target.files?.[0];
-		setIsUpload(false);
-
 		const fileReader = new FileReader();
 		fileReader.readAsDataURL(fileInfo);
 		fileReader.onload = (data) => {
 			const resultImgArr = [...resultImgUrl];
 			resultImgArr.push(data.target.result);
 			setResultimgUrl(resultImgArr);
-			const realImg = [...file];
-			realImg.push(fileInfo);
-			setFile(realImg);
 		};
-	}
+	};
 
 	const next = () => {
 		setCount(count + 1);

@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+캐러셀 기능을 slick.js 와 같은 라이브러리를 사용하지 않고 구현 하였음.
 
-## Getting Started
+- 이미지는 하드코딩 되어 있지 않습니다.
+- 그림은 최대 5장 까지 추가 또는 삭제 가능합니다.
+- 추가된 그림은 약 5초마다 다음 그림으로 넘어갑니다.
+- 마우스가 이미지에 hover 되면 다음 그림으로 넘어가지 않습니다.
+  - 마우스가 이미지에서 벗어나면 다시 5초마다 다음 그림으로 넘어갑니다.
+- 다음 / 이전 버튼을 활용하여 원하는 그림으로 이동 할 수 있습니다.
+- 이미지가 돌아오는 순서는 아래 추가된 순서와 같습니다.
+- 이미지는 newArray의 숫자를 조정함으로서 원하는만큼 추가할 수 있습니다.
+-
 
-First, run the development server:
+## 사용 스택
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+HTML
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+javascript
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Typescript
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+React / React-hook
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+emotion
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+styledComponent
