@@ -50,8 +50,6 @@ export default function Project() {
 				next();
 			}, 5000);
 			return () => clearInterval(timer);
-		} else {
-			return;
 		}
 	});
 

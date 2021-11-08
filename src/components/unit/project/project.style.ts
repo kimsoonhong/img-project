@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { MouseEvent } from "react";
 
 interface Iprops {
 	isActive: boolean;
