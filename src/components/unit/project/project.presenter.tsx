@@ -29,7 +29,7 @@ interface Iprops {
 export default function ProjectUI(props: Iprops) {
 	return (
 		<Wrapper>
-			<Top>{props.ishover ? "호버됨" : "호버되지 않음"}</Top>
+			<Top>{props.ishover ? "호버됨." : "호버되지 않음."}</Top>
 			<Middle
 				onMouseEnter={() => props.setIshover(true)}
 				onMouseLeave={() => props.setIshover(false)}
