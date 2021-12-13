@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function jest() {
+const jest = () => {
 	const [stack, setStack] = useState([]);
 	const [input, setInput] = useState("");
 
@@ -10,10 +10,10 @@ export default function jest() {
 			alert("stack의 item 갯수는 5개를 초과할 수 없습니다.");
 			return;
 		}
-
 		const items = [...stack, input];
 		setStack(items);
 	};
+
 	const onclickpop = () => {
 		if (stack.length === 0) {
 			alert("stack을 더이상 비울 수 없습니다.");
@@ -28,6 +28,10 @@ export default function jest() {
 		setInput(e.target.value);
 	};
 
+	const add = (num1, num2) => {
+		return num1 + num2;
+	};
+
 	return (
 		<div>
 			<div>
@@ -35,10 +39,11 @@ export default function jest() {
 					<div key={data.id}>{data}</div>
 				))}
 			</div>
+			<button onClick={onclickpush}>push</button>{" "}
 			<input onChange={onchangeinput} value={input} />
-			<button onClick={onclickpush}>push</button>
 			<button onClick={onclickpop}>pop</button>
 		</div>
 	);
-}
-module.exports = jest;
+};
+export default jest;
+// module.exports = jest;

@@ -1,13 +1,5 @@
-const jest = require("../index");
+const fn = require("../fn");
 
-describe("jest", () => {
-	let jest;
-
-	beforeEach(() => {
-		jest = new jest();
-	});
-
-	it("빈 스텍입니다.", () => {
-		expect(jest.stack).toBe([]);
-	});
+test("test", () => {
+	expect(fn.add(5, 6)).toBe(11);
 });
