@@ -1,7 +1,5 @@
-// import { useState } from "react";
+function add(a, b) {
+	return a + b;
+}
 
-const fn = {
-	add: (a, b) => a + b,
-};
-
-module.exports = fn;
+module.exports = add;

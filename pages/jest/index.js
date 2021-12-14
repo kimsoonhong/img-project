@@ -28,16 +28,20 @@ const jest = () => {
 		setInput(e.target.value);
 	};
 
-	const add = (num1, num2) => {
-		return num1 + num2;
-	};
-
 	return (
 		<div>
-			<div>
-				{stack.map((data) => (
-					<div key={data.id}>{data}</div>
-				))}
+			<div style={{ width: "500px" }}>
+				{stack
+					.slice(0)
+					.reverse()
+					.map((data) => (
+						<div
+							key={data.id}
+							style={{ marginTop: "5px", backgroundColor: "red" }}
+						>
+							{data}
+						</div>
+					))}
 			</div>
 			<button onClick={onclickpush}>push</button>{" "}
 			<input onChange={onchangeinput} value={input} />

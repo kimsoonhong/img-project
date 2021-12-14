@@ -1,5 +1,5 @@
-const fn = require("../fn");
+const add = require("../fn");
 
-test("test", () => {
-	expect(fn.add(5, 6)).toBe(11);
+it("add", () => {
+	expect(add(2, 3)).toBe(5);
 });
